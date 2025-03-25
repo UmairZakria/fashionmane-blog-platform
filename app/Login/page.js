@@ -103,7 +103,7 @@ const Page = () => {
                         <div className='flex flex-col '>
 
                             <label htmlFor="Email" className=' font-medium text-sm ' >Email Address</label>
-                            <input type="email" required className='pt-2 text-white focus:outline-none px-2 border-gray-700 bg-transparent border-x-0 border-t-0 border-b-2'
+                            <input type="email" required className='pt-2  focus:outline-none px-2 border-gray-700 bg-transparent border-x-0 border-t-0 border-b-2'
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
@@ -113,7 +113,7 @@ const Page = () => {
 
                             <label className=' font-medium text-sm ' htmlFor="Password">Password</label>
                             <div className='w-full relative'>
-                                <input required type={passwordtype} className=' text-white pt-2 px-2 w-full border-gray-700  focus:outline-none bg-transparent border-b-2 border-x-0 border-t-0'
+                                <input required type={passwordtype} className='  pt-2 px-2 w-full border-gray-700  focus:outline-none bg-transparent border-b-2 border-x-0 border-t-0'
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <div className='p-[4px]  absolute rounded-t-md -top-1     right-0  '>
