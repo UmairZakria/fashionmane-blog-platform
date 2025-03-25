@@ -4,8 +4,11 @@ import Navbar from './Navbar'
 import { format } from 'date-fns';
 
 import Sidebar from './Sidebar'
+import { useRouter } from 'next/navigation'
 
 const Main = ({ data }) => {
+    const rout = useRouter()
+  
   const [y, setY] = useState(8)
   // const data = [
   //   {
@@ -47,6 +50,7 @@ const Main = ({ data }) => {
 
 
   }
+  
   const Card = ({ _id, image, category, date, discription, title }) => {
     return (
       <div key={_id} onClick={() => handelredrict(data.title)} className=' shadow-md p-2 overflow-hidden rounded-sm  bg-white md:mx-0 mx-5 cursor-pointer space-y-2 pb-3 flex flex-col '>
