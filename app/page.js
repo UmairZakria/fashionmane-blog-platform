@@ -2,7 +2,7 @@ import Main from "@/app/components/Main";
 
 async function getData() {
     try {
-        const res2 = await fetch('http://localhost:3000/api/findblogs', {
+        const res2 = await fetch('https://fashionmane.vercel.app/api/findblogs', {
             method: 'POST', // Use POST method
             headers: {
               'Content-Type': 'application/json',
