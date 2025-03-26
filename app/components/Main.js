@@ -7,9 +7,11 @@ import Sidebar from './Sidebar'
 import { useRouter } from 'next/navigation'
 
 const Main = ({ data }) => {
-    const rout = useRouter()
-  
-  const [y, setY] = useState(8)
+  const rout = useRouter()
+  const [end, setEnd] = useState({ display: 'none' })
+
+
+  const [y, setY] = useState(4)
   // const data = [
   //   {
   //     _id:'9',
@@ -50,10 +52,22 @@ const Main = ({ data }) => {
 
 
   }
-  
+  const handelload = () => {
+
+
+    if (y >= data.length) {
+      setEnd({ display: 'flex' })
+    } else {
+
+      setY(y + 3)
+    }
+
+
+  }
+
   const Card = ({ _id, image, category, date, discription, title }) => {
     return (
-      <div key={_id} onClick={() => handelredrict(data.title)} className=' shadow-md p-2 overflow-hidden rounded-sm  bg-white md:mx-0 mx-5 cursor-pointer space-y-2 pb-3 flex flex-col '>
+      <div key={_id} onClick={() => handelredrict(title)} className=' shadow-md p-2 overflow-hidden rounded-sm  bg-white md:mx-0 mx-5 cursor-pointer space-y-2 pb-3 flex flex-col '>
 
         <img src={image} className='object-cover hover:scale-110  transition-all duration-300 ease-in-out rounded-lg  h-[200px]' alt={title} />
 
@@ -75,17 +89,26 @@ const Main = ({ data }) => {
   }
   return (
     <>
-      <div className='w-full px-10 '>
+      <div className='w-full px-2 lg:px-10 '>
 
-        <div className=' min-h-screen flex gap-5 w-full my-20'>
-          <div className='  w-[75%] grid grid-cols-3 gap-3'>
-            {
-              data.slice(0, y).reverse().map((data, index) => (
-                <Card key={index} _id={data._id} image={data.image} category={data.category} date={data.date} discription={data.discription} title={data.title} />
-              ))
-            }
+        <div className=' min-h-screen flex lg:flex-row flex-col gap-5 w-full my-20'>
+          <div>
 
+            <div className='  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-3'>
+              {
+                data.slice(0, y).reverse().map((data, index) => (
+                  <Card key={index} _id={data._id} image={data.image} category={data.category} date={data.date} discription={data.discription} title={data.title} />
+                ))
+              }
+
+            </div>
+            <div className='w-full flex items-center justify-center flex-col  my-2'>
+
+              <p style={end} className='text-xl text-prime'>You reached the end!</p>
+              <button onClick={handelload} className='p-4 bg-prime2 font-semibold text-white' > Show More.. </button>
+            </div>
           </div>
+
           <div className=' '>
             <Sidebar />
           </div>

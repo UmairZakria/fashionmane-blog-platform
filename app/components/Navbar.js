@@ -1,34 +1,35 @@
 'use client'
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 // import NavLink from "next/NavLink";
 import Link from "next/link";
 // import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import NavLink from "./NavLink";
+import { Menu, X } from 'lucide-react'
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen); 
+    setIsOpen(!isOpen);
 
   };
 
-  
+
 
   return (
     <motion.div
-    initial={{y: -100}}
-    animate={{y : 0}}
-    transition={{
+      initial={{ y:   -100 }}
+      animate={{ y: 0 }}
+      transition={{
         delay: 0.1,
         duration: 0.3,
         type: "spring",
         stiffness: 150,
       }}
-    className="  bg-transparent  top-0 items-center h-[80px] z-[100] w-full backdrop-blur-lg bg-opacity-10">
+      className="  bg-transparent  top-0 items-center h-[80px] z-[100] w-full backdrop-blur-lg bg-opacity-10">
       <div className="container flex justify-between items-center h-full mx-auto w-full">
         <div>
-        <img src={'/logo.png'} className="" width={300} height={300}/>
+          <img src={'/logo.png'} className="" width={300} height={300} />
 
         </div>
 
@@ -40,25 +41,27 @@ const Navbar = () => {
         </ul>
 
         {/* Mobile Menu Toggle Button */}
-        <button onClick={toggleMenu} className="md:hidden border rounded-full z-50">
+        <button onClick={toggleMenu} className="md:hidden  rounded-full z-50">
           {isOpen ? (
-             <>
-             <motion.img   initial={{}} whileTap={{rotate:360}} width="32" height="32" className="hidden dark:block   " src="https://img.icons8.com/ios-filled/50/FFFFFF/close-window.png" alt="close-window"/>
-             <motion.img   initial={{}} whileTap={{rotate:360}} width="32" height="32" className="block dark:hidden  "  src="https://img.icons8.com/ios-filled/50/1A1A1A/close-window.png" alt="close-window"/>
-             </>
+              <motion.span initial={{}}  whileTap={{rotate:360}} transition={{duration:1}}>
+
+                <X />
+              </motion.span>
+
 
           ) : (
-            <>
-            <motion.img   initial={{}} whileTap={{rotate:360}} width="32" height="32" className="block dark:hidden  " src="https://img.icons8.com/ios-filled/50/menu--v1.png" alt="menu--v1"/>
-            <motion.img   initial={{}} whileTap={{rotate:360}} width="32" height="32" className="hidden dark:block   "  src="https://img.icons8.com/ios-filled/50/FFFFFF/menu--v1.png" alt="menu--v1"/>
-            </>
+              <motion.span initial={{}}   whileTap={{rotate:360}} transition={{duration:1}}>
+
+                <Menu className="active:rotate-180" />
+              </motion.span>
+
           )}
         </button>
 
         {/* Mobile Menu */}
         <motion.div
-          initial={{ y: "-100vh" }}
-          animate={{ y: isOpen ? 0 : "100vh" }}
+          initial={{ x: "100vw" }}
+          animate={{ x: isOpen ? 0 : "100vw" }}
           transition={{
             delay: 0.1,
             duration: 0.3,

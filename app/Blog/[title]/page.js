@@ -61,7 +61,7 @@ const Page = () => {
         
         <div className='flex flex-col lg:flex-row md:flex-col lg:w-[95%] w-full ml-0 px-4 lg:ml-[4%] my-10 gap-4  h-auto min-h-screen '>
 
-            <div style={loadings} className='w-full h-screen absolute flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
+            <div style={loadings} className='w-full h-screen fixed flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
                 <Image
                     className=" object-cover    "
                     src={loading} // Path to your image
@@ -69,10 +69,10 @@ const Page = () => {
                     alt="Description of image"
                 />
             </div>
-            <div className=' w-full h-full '>
+            <div className=' w-full h-full space-y-4 '>
 
                 
-                <h1 className='lg:text-[40px] text-[20px] md:text-[30px]  font-semibold w-full lg:w-3/4 '>{post.title}</h1>
+                <h1 className=' text-[20px] md:text-[24px]  font-semibold w-full lg:w-3/4 '>{post.title}</h1>
                 {/* <TextReader text={post.content} /> */}
                 <div className="flex items-center  text-prime3 gap-24 w-full">
 

@@ -26,6 +26,7 @@ const Sidebar = () => {
 
   const getdata = async () => {
     setLoadings({ display: 'flex' });
+    window.scroll(0,0)
     document.body.style.overflow = 'hidden';
 
 
@@ -70,7 +71,7 @@ const Sidebar = () => {
   }
   return (
     <>
-      <div style={loadings} className='w-full h-screen absolute flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
+      <div style={loadings} className='w-full h-screen fixed flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
         <Image
           className=" object-cover    "
           src={loading}
@@ -105,17 +106,17 @@ const Sidebar = () => {
         </div>
 
         <h1 className='text-2xl my-5 '>Recent Post</h1>
-        <div className='space-y-4 hidden lg:block md:block '>
+        <div className='space-y-4   '>
         {
           data.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 6).map((data)=>(
 
             
           <div key={data._id}  onClick={() => handelredrict(data.title)} className='flex cursor-pointer   w-full lg:h-auto  md:h-[180px] gap-3 lg:gap-1 p-1 '>
             {/* <img className='h-full md:w-[500px] lg:w-[35%]' src={data.image} alt={data.image} /> */}
-            <div className='w-full flex  justify-evenly   flex-col'>
+            <div className='w-full flex   justify-evenly   flex-col'>
 
-            <h2 className='line-clamp-3 text-prime3  lg:text-lg'>{data.title}</h2>
-            <p className='text-gray-700 lg:hidden md:block  line-clamp-4 text-sm'>{data.discription}</p>
+            <h2 className='line-clamp-3 text-prime3  text-lg'>{data.title}</h2>
+            {/* <p className='text-gray-700 lg:hidden md:block  line-clamp-4 text-sm'>{data.discription}</p> */}
             
             </div>
 
@@ -125,28 +126,7 @@ const Sidebar = () => {
           }
 
         </div>
-      <div className="lg:hidden md:hidden w-full h-auto  ">
-        <Slider {...settings}>
-        {
-          data.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5).map((data)=>(
 
-            
-            <div key={data._id} onClick={() => handelredrict(data.title)} className='border-gray-400 dark:border-gray-700   rounded-lg border cursor-pointer space-y-1 pb-3 flex flex-col '>
-
-            {/* <img src={data.image} className='object-cover  rounded-t-lg w-full h-[180px]' alt={data.title} /> */}
-
-            <div className='mx-4 space-y-2'>
-              <h1 className=' md:text-3xl text-xl  lg:text-2xl line-clamp-2 font-semibold'>{data.title} </h1>
-              <div className='flex w-full items-center justify-between  text-gray-600 font-normal ' >
-                <span>{data.category}</span>
-              </div>
-              <p className='text-gray-700  line-clamp-4 text-sm'>{data.discription}</p>
-            </div>
-          </div>
-          ))
-          }
-        </Slider>
-        </div>
       </div>
     </>
   )

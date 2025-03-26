@@ -66,7 +66,7 @@ const Listblog = (Props) => {
   return (
     <>
       <div className="container mx-auto">{error}</div>
-      <div style={loadings} className='w-full h-screen absolute flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
+      <div style={loadings} className='w-full h-screen fixed flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
         <Image
           className=" object-cover    "
           src={loading} 
