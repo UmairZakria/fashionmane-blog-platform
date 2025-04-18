@@ -1,4 +1,4 @@
-import Main from "@/app/components/Main";
+import Main2 from "@/app/components/Main2";
 
 async function getData() {
     try {
@@ -21,16 +21,16 @@ async function getData() {
 
 export default async function Page() {
 
-    const {  data } = await getData();
+    // const {  data } = await getData();
 
-    if (data.length <= 0) {
-        return <h1 className="flex items-center justify-center">The Page is Under Maintaince</h1>;
-    }
+    // if (data.length <= 0) {
+    //     return <h1 className="flex items-center justify-center">The Page is Under Maintaince</h1>;
+    // }
 
     return (
         <>
-            <Main 
-            data={data} 
+            <Main2 
+            // data={data} 
             />
         </>
     );
