@@ -1,6 +1,6 @@
 export function Loadingskull() {
     return (
-        <div className="shadow-md p-2 w-full md:w-[320px] h-[300px] overflow-hidden rounded-sm bg-gray-200 md:mx-0 mx-5 space-y-2 pb-3 flex flex-col animate-pulse">
+        <div className="shadow-md p-2 w-full md:w-[280px] h-[300px] overflow-hidden rounded-sm bg-gray-200 md:mx-0 mx-5 space-y-2 pb-3 flex flex-col animate-pulse">
             {/* Image skeleton */}
             <div className="h-[200px]  bg-gray-200  rounded   -lg"></div>
 
