@@ -75,6 +75,7 @@ const Page = () => {
                 />
 
             </div>
+            
             <Listblog
                 data={searchdata.length > 0 ? searchdata : data}
                 admin={true}

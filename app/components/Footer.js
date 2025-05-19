@@ -33,10 +33,10 @@ const Footer = () => {
         </a>
       </span> */}
         <span className=' flex items-center gap-4 '>
-          <span className='text-prime2  text-sm'> Disigned by </span>
+          <span className='text-prime2  text-sm'> Disigned by Team </span>
           <span className='flex items-center  text-sm'>
 
-            <Word tags={[{ name: "Umair Zakria", href: "https://www.linkedin.com/in/umair-zakria-67477b33a/" },
+            <Word tags={[{ name: "Umair Zakria", href: "https://umairzakria.vercel.app/" },
             { name: "Maryam Fatima", href: "https://www.linkedin.com/in/maryam-fatima-rajput-91538925a/" },]} />
           </span>
 

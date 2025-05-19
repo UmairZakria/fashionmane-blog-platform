@@ -57,7 +57,7 @@ const BlogEditor = () => {
 
   return (
     <>
-      <div className=" px-[20px] py-20 ">
+      <div className=" px-[20px] py-10 ">
         <div style={loadings} className='w-full !z-[999] h-screen fixed flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
           <Image
             className=" object-cover    "

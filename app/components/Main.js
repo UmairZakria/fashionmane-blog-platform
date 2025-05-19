@@ -1,17 +1,22 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Navbar from './Navbar'
 import { format } from 'date-fns';
 
 import Sidebar from './Sidebar'
 import { useRouter } from 'next/navigation'
-
+import {useBlog} from "@/Context/blogcontext"
+import { Loadingskull } from './Loadingskull';
 const Main = ({ data }) => {
   const rout = useRouter()
+  const {blogs, setBlogs } = useBlog()
   const [end, setEnd] = useState({ display: 'none' })
+  useEffect(()=>{
+    setBlogs(data)
+  },[])
 
 
-  const [y, setY] = useState(4)
+  const [y, setY] = useState(15)
   // const data = [
   //   {
   //     _id:'9',
@@ -96,8 +101,13 @@ const Main = ({ data }) => {
 
             <div className='  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-3'>
               {
-                data.slice(0, y).reverse().map((data, index) => (
+                blogs.length > 0 && blogs.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, y).map((data, index) => (
                   <Card key={index} _id={data._id} image={data.image} category={data.category} date={data.date} discription={data.discription} title={data.title} />
+                ))
+              }
+              {
+                blogs.length == 0 && [1,2,3,4,5,6,].map((data,index)=>(
+                  <Loadingskull key={index} />
                 ))
               }
 

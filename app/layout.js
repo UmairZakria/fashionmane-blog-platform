@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import {BlogsProvider} from "@/Context/blogcontext"
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 const geistSans = Geist({
@@ -25,9 +26,12 @@ export default function RootLayout({ children }) {
       <body
         className=' bg-whiteoff  !overflow-x-hidden'
       >
-        {/* <Navbar /> */}
+        <Navbar />
+        <BlogsProvider>
+
         {children}
-        {/* <Footer /> */}
+        </BlogsProvider>
+        <Footer />
 
       </body>
     </html>
