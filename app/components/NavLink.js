@@ -10,7 +10,7 @@ const NavLink = ({ href, children }) => {
   return (
     <>
     
-    <Link href={href} className={isActive ? 'bg-prime2 text-white lg:p-3 md:p-3' : 'hover:bg-prime2 hover:text-white transition-all duration-300 ease-in-out md:p-3 lg:p-3 '} >
+    <Link href={href} className={isActive ? 'bg-white w-full text-center font-poppins text-prime2     md:p-2 rounded-full' : '  rounded-full hover:underline text-center  text-white w-full hover:text-white transition-all duration-300 ease-in-out md:p-2 '} >
       
         {children}
     

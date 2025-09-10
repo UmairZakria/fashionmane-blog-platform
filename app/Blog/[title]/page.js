@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import loading from './ui/loading.gif'
+import { CalendarDays , Newspaper } from 'lucide-react';
 
 import React from 'react'
 import Sidebar from '@/app/components/Sidebar'
@@ -68,19 +69,19 @@ const Page = () => {
             </Head>
             {
                 post.title !== "" &&
-                <div className='flex flex-col lg:flex-row md:flex-col lg:w-[95%] w-full ml-0 px-4 lg:ml-[4%] my-10 gap-4  h-auto min-h-screen '>
+                <div className='flex  flex-col lg:flex-row md:flex-col container mx-auto w-full ml-0 px-4 lg:ml-[4%] my-10 gap-4  h-auto min-h-screen '>
 
 
-                    <div className=' w-full h-full space-y-4 '>
+                    <div className=' w-full lg:w-[80%] border-b border-prime h-full space-y-4 '>
 
 
-                        <h1 className=' text-[20px] md:text-[24px]  font-semibold w-full lg:w-3/4 '>{post.title}</h1>
+                        <h1 className=' text-2xl md:text-5xl font-semibold font-poppins  w-full lg:w-3/4 '>{post.title}</h1>
                         {/* <TextReader text={post.content} /> */}
-                        <div className="flex items-center  text-prime3 gap-24 w-full">
+                        <div className="flex items-center  text-prime2 font-poppins text-lg gap-4 w-full">
 
 
-                            <span className=''>{post.category}</span>
-                            <span>{post.date ? (format(new Date(post.date), 'MMM dd yyyy')) : ''} </span>
+                            <span className='flex gap-2 items-center'><Newspaper  /> {post.category}</span>|
+                            <span className='flex gap-2 items-center'>  <CalendarDays /> {post.date ? (format(new Date(post.date), 'MMM dd yyyy')) : ''} </span>
 
 
                         </div>

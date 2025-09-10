@@ -14,7 +14,6 @@ const Page = () => {
   const { blogs, setBlogs } = useBlog()
 
   const [data, setData] = useState([])
-  const [loadings, setLoadings] = useState({ display: 'none' })
 
   const getdata = async () => {
 
@@ -53,23 +52,22 @@ const Page = () => {
 
 
   return (
-    <>
-      <div style={loadings} className='w-full h-screen absolute flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
-        <Image
-          className=" object-cover    "
-          src={loading}
-          sizes={50}
-          alt="Loading"
-        />
+    <section className='relative'>
+
+      <div className="absolute top-5 left-1/2 -translate-x-1/2 scale-[10] opacity-70 blur-[5px]  ">
+        <img src="/fav.png" alt="" />
       </div>
-      <h1 className='container w-full mx-auto text-5xl my-10 font-semibold ' >Women Outfits</h1>
+      <h1 className='container  relative z-10 w-full mx-auto lg:text-6xl my-16 text-4xl md:px-0  px-6 font-  font-poppins  ' > <span className='text-prime border-b-[3px] border-prime/40  '>Womens Outfits</span> </h1>
+      <div className='relative z-10 container mx-auto  '>
+
       {data.length > 0 &&
         <Listblog
-          data={data}
-
+        data={data}
+        
         />
       }
-      <div className='container mx-auto  grid md:grid-cols-2  grid-cols-1  gap-y-8 gap-x-4 my-3 lg:grid-cols-3  '>
+      </div>
+      <div className='container relative z-10 mx-auto  grid md:grid-cols-2  grid-cols-1  gap-y-8 gap-x-4 my-3 lg:grid-cols-3  '>
         {data.length == 0 &&
           [1, 2, 3, 4, 5, 6].map((data, index) => (
 
@@ -78,7 +76,7 @@ const Page = () => {
 
         }
       </div>
-    </>
+    </section>
   )
 }
 

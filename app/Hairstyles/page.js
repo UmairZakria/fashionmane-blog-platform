@@ -49,23 +49,23 @@ const Page = () => {
 
 
   return (
-    <>
-      <div style={loadings} className='w-full h-screen absolute flex items-center justify-center top-0 left-0 bg-[#0000005b] '>
-        <Image
-          className=" object-cover    "
-          src={loading}
-          sizes={50}
-          alt="Loading"
-        />
-      </div>
-      <h1 className='container w-full mx-auto text-5xl my-10 font-semibold ' >Hair Styles</h1>
-      {data.length > 0 &&
-        <Listblog
-          data={data}
+    <section className='relative'>
 
-        />
-      }
-      <div className='container mx-auto  grid md:grid-cols-2  grid-cols-1  gap-y-8 gap-x-4 my-3 lg:grid-cols-3  '>
+      <div className="absolute top-20 left-1/2 rotate-270 scale-[10] opacity-70 blur-[5px]  ">
+        <img src="/fav.png" alt="" />
+      </div>
+      <h1 className='container  w-full mx-auto text-4xl md:px-0 px-6  lg:text-6xl my-16 font-  font-poppins  ' > <span className='text-prime border-b-[3px] border-prime/40  '>Hair Styles</span> </h1>
+
+      <div className=' container relative z-10 mx-auto'>
+
+        {data.length > 0 &&
+          <Listblog
+            data={data}
+
+          />
+        }
+        </div>
+      <div className='container mx-auto  relative z-10 grid md:grid-cols-2  grid-cols-1  gap-y-8 gap-x-4 my-3 lg:grid-cols-3  '>
         {data.length == 0 &&
           [1, 2, 3, 4, 5, 6].map((data, index) => (
 
@@ -75,7 +75,7 @@ const Page = () => {
         }
       </div>
 
-    </>
+    </section>
   )
 }
 

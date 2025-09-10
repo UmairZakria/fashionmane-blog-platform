@@ -31,32 +31,31 @@ const Navbar = () => {
 
   return (
     <motion.div
-      initial={{ y: -100 }}
-      animate={{ y: isHidden ? -100 : 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isHidden ? 0 : 1 }}
       transition={{
-        delay: 0.05,
-        duration: 0.3,
-        type: "spring",
-        stiffness: 120,
+        delay: 0.5,
+        duration: 1,
+
       }}
-      className="sticky bg-transparent top-0 items-center h-[80px] z-[100] w-full backdrop-blur-lg bg-opacity-10"
+      className=" b bg-transparent relative  top-0 items-center h-[80px] z-[100] w-full backdrop-blur-lg bg-opacity-10"
     >
-      <div className="container flex justify-between items-center h-full mx-auto w-full px-4">
+      <div className="container py-4 flex justify-between items-center h-full mx-auto w-full ">
         {/* Logo */}
         <div>
-          <img src={"/logo.png"} alt="logo" className="h-12 w-auto" />
+          <img src={"/logo.png"} alt="logo" className="xl:w-[220px] lg:w-[180px] w-[150px] hover:scale-105 cursor-pointer transition-all duration-300 ease-linear " />
         </div>
 
         {/* Desktop Nav */}
-        <ul className="lg:flex md:flex hidden items-center justify-center font-semibold gap-1 md:text-md">
+        <ul className="lg:flex md:flex hidden bg-[#3a0157] shadow-xl rounded-full gap-2  p-1 lg:w-[35%] items-center justify-around   font-poppins md:text-md">
           <NavLink href={"/"}>Home</NavLink>
           <NavLink href={"/Outfits"}>Outfits</NavLink>
           <NavLink href={"/Hairstyles"}>Hairstyles</NavLink>
         </ul>
 
         {/* Mobile Toggle Button */}
-        <button onClick={toggleMenu} className="md:hidden z-50 p-2">
-          <motion.span whileTap={{ rotate: 360 }} transition={{ duration: 0.5 }}>
+        <button onClick={toggleMenu} className="md:hidden active:animate-spin z-50 p-2">
+          <motion.span whileTap={{ rotate: 360 }} className="active:animate-spin" transition={{ duration: 0.5 }}>
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </motion.span>
         </button>

@@ -1,15 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-prime: #db65e3;
-  --color-prime2: #007bff;
-  --color-prime3: #003b7a;
+  --color-prime: #bb07b1;
+  --color-prime2: #9b06e8;
+  --color-prime3: #9b06e8;
   --color-whiteoff: #f8f7f7;
+  --font-poppins: var(--font-poppins);
+  --font-roboto: var(--font-roboto);
   
 
 }
+@utility font-poppins {
+  font-family: var(--font-poppins), sans-serif;
+}
+@utility font-roboto {
+  font-family: var(--font-roboto), sans-serif;
+}
+
 :root {
-  --background: #f0f0f0;
+  --background: white;
   --foreground: #171717;
   --prime2: #db65e3;
   --prime: #003b7a;
