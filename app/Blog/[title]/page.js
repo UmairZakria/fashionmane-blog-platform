@@ -3,7 +3,7 @@ import Blogpage from "../../components/Blogpage";
 export async function generateMetadata({ params }) {
   let { title } = await params;
   title = decodeURIComponent(title);
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/findpost`, {
+  const res = await fetch(`https://fashionmane.com/api/findpost`, {
     method: "POST",
     body: JSON.stringify({ title: title }),
     headers: { "Content-Type": "application/json" },
