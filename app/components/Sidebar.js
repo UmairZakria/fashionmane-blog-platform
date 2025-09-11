@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import React from "react";
+import axios from 'axios'
 
 import { Search } from "lucide-react";
 
@@ -27,12 +28,35 @@ const Sidebar = ({ datablog }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState([]);
-  const [loadings, setLoadings] = useState({ display: "none" });
   const [search, setSearch] = useState([]);
 
+  const getdata = async () => {
+
+    try {
+      const res = await axios.post('/api/findblogs', { category: 'all' });
+      const res2 = res.data.post
+ 
+      setData(res2)
+
+    } catch (error) {
+      console.error('Error fetching post:', error);
+    }
+  };
+
   useEffect(() => {
-    setData(blogs);
+    if (blogs.length == 0) {
+      getdata();
+
+    } else {
+      if (data.length == 0){
+
+        setData(blogs)
+      }
+
+    }
+
   }, [blogs]);
+
   useEffect(() => {
     const searchdata = data.filter((item) =>
       item.title.toLowerCase().includes(searchQuery)
@@ -48,7 +72,7 @@ const Sidebar = ({ datablog }) => {
   };
   return (
     <>
-      <div className="   w-[250px]    ">
+      <div className="   w-[280px]    ">
         <div className="relative text-white ">
           <input
             type="text"

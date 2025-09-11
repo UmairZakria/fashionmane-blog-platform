@@ -54,7 +54,7 @@ const Page = () => {
   return (
     <section className='relative'>
 
-      <div className="absolute top-5 left-1/2 -translate-x-1/2 scale-[10] opacity-70 blur-[5px]  ">
+      <div className="absolute top-30  left-1/2 -translate-x-1/2 scale-[12]  opacity-30 blur-[6px]  ">
         <img src="/fav.png" alt="" />
       </div>
       <h1 className='container  relative z-10 w-full mx-auto lg:text-6xl my-16 text-4xl md:px-0  px-6 font-  font-poppins  ' > <span className='text-prime border-b-[3px] border-prime/40  '>Womens Outfits</span> </h1>

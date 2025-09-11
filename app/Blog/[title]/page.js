@@ -1,126 +1,27 @@
-'use client'
-import Image from 'next/image'
-import loading from './ui/loading.gif'
-import { CalendarDays , Newspaper } from 'lucide-react';
+import Blogpage from "../../components/Blogpage";
+// ✅ Fetch metadata only
+export async function generateMetadata({ params }) {
+  let { title } = await params;
+  title = decodeURIComponent(title);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/findpost`, {
+    method: "POST",
+    body: JSON.stringify({ title: title }),
+    headers: { "Content-Type": "application/json" },
+    cache: "no-store", // always fresh
+  });
 
-import React from 'react'
-import Sidebar from '@/app/components/Sidebar'
-import axios from 'axios'
-import { useRouter, useParams } from 'next/navigation'
+  const data = await res.json();
+  console.log(data);
 
-import { format } from 'date-fns';
-import Head from 'next/head';
-
-
-import { useEffect, useState } from 'react'
-import { useBlog } from '@/Context/blogcontext'
-const Page = () => {
-    const { blogs } = useBlog()
-    const params = useParams();
-
-    const router = useRouter()
-    const title = decodeURIComponent(params.title);
-    const [post, setPost] = useState({ title: '', content: '' })
-    const [loadings, setLoadings] = useState({ display: 'none' })
-
-    const getdata = async (title) => {
-        // window.scroll(0, 0)
-        // document.body.style.overflowY = 'hidden';
-        // setLoadings({ display: 'flex' });
-
-
-        try {
-            console.log(title)
-            const res = await axios.post('/api/findpost', { title });
-            setPost(res.data.post)
-            console.log(res)
-
-        } catch (error) {
-            console.error('Error fetching post:', error);
-            router.refresh()
-        }
-    };
-
-    useEffect(() => {
-        if (blogs.length == 0) {
-            getdata(title);
-            
-
-        } else {
-            // getdata(title);
-
-            const blog = blogs.find(item =>
-                item.title.toLowerCase() === title.toLowerCase()
-            )
-            console.log(blog)
-            setPost(blog)
-        }
-    }, [title]);
-
-
-
-    return (
-        <>
-            <Head>
-                <title>{post.title}</title>
-                <meta name="description" content={post.discription} />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta charSet="UTF-8" />
-            </Head>
-            {
-                post.title !== "" &&
-                <div className='flex  flex-col lg:flex-row md:flex-col container mx-auto w-full ml-0 px-4 lg:ml-[4%] my-10 gap-4  h-auto min-h-screen '>
-
-
-                    <div className=' w-full lg:w-[80%] border-b border-prime h-full space-y-4 '>
-
-
-                        <h1 className=' text-2xl md:text-5xl font-semibold font-poppins  w-full lg:w-3/4 '>{post.title}</h1>
-                        {/* <TextReader text={post.content} /> */}
-                        <div className="flex items-center  text-prime2 font-poppins text-lg gap-4 w-full">
-
-
-                            <span className='flex gap-2 items-center'><Newspaper  /> {post.category}</span>|
-                            <span className='flex gap-2 items-center'>  <CalendarDays /> {post.date ? (format(new Date(post.date), 'MMM dd yyyy')) : ''} </span>
-
-
-                        </div>
-                        <div className='h-[2px]    w-[95%] my-5 bg-black '></div>
-
-
-
-
-                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                    </div>
-
-
-                    <Sidebar />
-
-
-                </div>
-            }
-            {
-                post.title == "" && <div className=' flex flex-col lg:flex-row md:flex-col lg:w-[95%] w-full ml-0 px-4 lg:ml-[4%] my-10 gap-4  h-auto min-h-screen'>
-                    <div className=' w-full h-full space-y-4 '>
-
-
-                        <div className=' text-[20px] md:text-[24px]  p-4  font-semibold w-full  bg-gray-200 animate-pulse rounded-md '></div>
-                        {/* <TextReader text={post.content} /> */}
-
-                        <div className='h-[2px]    w-[95%] my-5 bg-black '></div>
-
-
-
-
-                        <div className='bg-gray-200 h-[50vh] w-full  animate-pulse ' > </div>
-                    </div>
-                    <Sidebar />
-
-                </div>
-            }
-        </>
-
-    )
+  return {
+    title: data?.post?.title || "Blog",
+    description: data?.post?.description || "Read the latest blog",
+  };
 }
 
-export default Page
+// ✅ Actual rendering uses client + context
+export default async function Page({ params }) {
+  let { title } = await params;
+  title = decodeURIComponent(title);
+  return <Blogpage title={title} />;
+}
