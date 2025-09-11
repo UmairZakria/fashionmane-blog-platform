@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 import { useBlog } from "@/Context/blogcontext";
 const Blogpage = ({title}) => {
   const { blogs } = useBlog();
-  const params = useParams();
 
   const router = useRouter();
 //   const title = decodeURIComponent(params.title);
