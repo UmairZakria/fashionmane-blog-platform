@@ -1,27 +1,57 @@
 import Blogpage from "../../components/Blogpage";
-// ✅ Fetch metadata only
+
 export async function generateMetadata({ params }) {
-  let { title } = await params;
+  let { title } = params;
   title = decodeURIComponent(title);
+
   const res = await fetch(`https://fashionmane.com/api/findpost`, {
     method: "POST",
-    body: JSON.stringify({ title: title }),
+    body: JSON.stringify({ title }),
     headers: { "Content-Type": "application/json" },
-    cache: "no-store", // always fresh
+    cache: "no-store", // always fresh for metadata
   });
 
   const data = await res.json();
-  console.log(data);
+  const post = data?.post || {};
+
+  // Fallbacks
+  const metaTitle = post.title ? `${post.title} | Fashion Mane` : "Blog | Fashion Mane";
+  const metaDesc = post.description || "Read the latest trends, outfits, and fashion tips on Fashion Mane.";
+  const canonicalUrl = `https://fashionmane.com/Blog/${encodeURIComponent(title)}`;
+  const ogImage = post.image || "https://fashionmane.com/logo.png"; // add default
 
   return {
-    title: data?.post?.title || "Blog",
-    description: data?.post?.description || "Read the latest blog",
+    title: metaTitle,
+    description: metaDesc,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: metaTitle,
+      description: metaDesc,
+      url: canonicalUrl,
+      type: "article",
+      siteName: "Fashion Mane",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title || "Fashion Mane Blog",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metaTitle,
+      description: metaDesc,
+      images: [ogImage],
+    },
   };
 }
 
-// ✅ Actual rendering uses client + context
 export default async function Page({ params }) {
-  let { title } = await params;
+  let { title } = params;
   title = decodeURIComponent(title);
   return <Blogpage title={title} />;
 }
