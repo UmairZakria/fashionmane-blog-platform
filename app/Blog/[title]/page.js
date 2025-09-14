@@ -3,7 +3,7 @@ import {deslugify} from "@/lib/deslugify"
 
 export async function generateMetadata({ params }) {
   let { title } = await params;
-  title = deslugify(title)
+  title = await deslugify(title)
   title = decodeURIComponent(title);
 
   const res = await fetch(`https://fashionmane.com/api/findpost`, {
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   let { title } = await params;
-  title = deslugify(title)
+  title = await deslugify(title)
   title = decodeURIComponent(title);
   return <Blogpage title={title} />;
 }

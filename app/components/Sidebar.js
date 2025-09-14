@@ -9,7 +9,7 @@ import { useBlog } from "@/Context/blogcontext";
 
 import { useRouter } from "next/navigation";
 import Slider from "react-slick";
-import {slugify} from "@/lib/slugify"
+import { slugify } from "@/lib/slugify"
 
 // Sidebar loading skeleton
 function SidebarLoadingskull() {

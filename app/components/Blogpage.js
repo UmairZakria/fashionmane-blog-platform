@@ -79,13 +79,9 @@ const Blogpage = ({title}) => {
       
       <div className="bg-gray-200 animate-pulse rounded-md 
                       h-8 md:h-14 lg:h-14 
-                      w-[90%] lg:w-[90%]">
+                      w-[90%] lg:w-[70%]">
       </div>
       
-      <div className="bg-gray-200 animate-pulse rounded-md 
-                      h-8 md:h-14 lg:h-14 
-                      w-[40%] lg:w-[55%]">
-      </div>
 
       <div className="flex items-center gap-6">
         <div className="bg-gray-200 animate-pulse rounded-md h-6 w-36"></div>
@@ -94,14 +90,7 @@ const Blogpage = ({title}) => {
 
       <div className="h-[2px] w-[95%] my-5 bg-gray-300 animate-pulse"></div>
 
-      <div className="bg-gray-200 animate-pulse rounded-md 
-                      h-8 md:h-8 
-                      w-[90%] ">
-      </div>
-      <div className="bg-gray-200 animate-pulse rounded-md 
-                      h-8 md:h-8 
-                      w-[75%] ">
-      </div>
+
 
       <div className="space-y-4 mt-6">
         <div className="bg-gray-200 animate-pulse rounded-md h-4 w-[90%]"></div>

@@ -23,7 +23,6 @@ const Main = ({ data }) => {
 
   const handleRedirect = (title) => {
     let titlesl = slugify(title)
-
     router.push(`/Blog/${encodeURIComponent(titlesl)}`);
   };
 
