@@ -8,6 +8,8 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
+import { slugify } from "@/lib/slugify";
+
 const Listblog = (Props) => {
   const rout = useRouter();
   const [loadings, setLoadings] = useState({ display: "none" });
@@ -23,7 +25,9 @@ const Listblog = (Props) => {
     }
   };
   const handelredrict = (title) => {
-    rout.push(`/Blog/${encodeURIComponent(title)}`);
+    let titlesl = slugify(title)
+
+    rout.push(`/Blog/${encodeURIComponent(titlesl)}`);
   };
   const handelredrict2 = (title) => {
     rout.push(`/Panel/Blogedit/${encodeURIComponent(title)}`);

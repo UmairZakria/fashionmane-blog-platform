@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar";
 import { useRouter } from "next/navigation";
 import { useBlog } from "@/Context/blogcontext";
 import { Loadingskull } from "./Loadingskull";
-
+import {slugify} from "@/lib/slugify"
 const Main = ({ data }) => {
   const router = useRouter();
   const { blogs, setBlogs } = useBlog();
@@ -20,8 +20,11 @@ const Main = ({ data }) => {
 
   const [y, setY] = useState(15);
 
+
   const handleRedirect = (title) => {
-    router.push(`/Blog/${encodeURIComponent(title)}`);
+    let titlesl = slugify(title)
+
+    router.push(`/Blog/${encodeURIComponent(titlesl)}`);
   };
 
   const handleLoad = () => {

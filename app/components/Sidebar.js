@@ -9,6 +9,7 @@ import { useBlog } from "@/Context/blogcontext";
 
 import { useRouter } from "next/navigation";
 import Slider from "react-slick";
+import {slugify} from "@/lib/slugify"
 
 // Sidebar loading skeleton
 function SidebarLoadingskull() {
@@ -68,7 +69,9 @@ const Sidebar = ({ datablog }) => {
   }, [searchQuery]);
 
   const handelredrict = (title) => {
-    router.push(`/Blog/${encodeURIComponent(title)}`);
+    let titlesl = slugify(title)
+
+    router.push(`/Blog/${encodeURIComponent(titlesl)}`);
   };
   return (
     <>
