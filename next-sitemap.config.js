@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: "https://fashionmane.com",
