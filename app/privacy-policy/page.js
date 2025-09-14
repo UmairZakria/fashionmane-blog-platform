@@ -12,7 +12,7 @@ export default function Page() {
 
         <section className="prose space-y-4 prose-sm sm:prose lg:prose-lg">
           <p className="text-2xl mb-10">
-            Welcome to <strong>Fashion Mane</strong> (the "Site") — a fashion & hairstyles blog dedicated to outfit
+            Welcome to <strong>Fashion Mane</strong> (the Site) — a fashion & hairstyles blog dedicated to outfit
             inspiration, styling tips, and beauty content. This Privacy Policy explains how we collect, use, disclose,
             and safeguard your information when you visit <a href="https://fashionmane.com" className="text-indigo-600">fashionmane.com</a>.
           </p>
@@ -98,7 +98,7 @@ export default function Page() {
           <h2 className="text-4xl underline font-medium text-prime mb-10">Changes to This Policy</h2>
           <p className="text-xl ">
             We may update this Privacy Policy from time to time. When changes are material, we will post a prominent
-            notice on the Site and update the "Last updated" date above.
+            notice on the Site and update the Last updated date above.
           </p>
 
           <h2 className="text-4xl underline font-medium text-prime mb-10">Contact Us</h2>
