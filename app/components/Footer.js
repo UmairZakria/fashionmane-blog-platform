@@ -7,6 +7,7 @@ const navLinks = [
   { name: 'Home', href: '/' },
   { name: 'Outfits', href: '/Outfits' },
   { name: 'Hairstyles', href: '/Hairstyles' },
+  { name: 'Privacy Policy', href: '/privacy-policy' },
   { name: 'Login', href: '/Login' },
 ];
 
@@ -30,7 +31,7 @@ const Footer = () => {
         </div>
         <nav className="flex flex-wrap gap-4 justify-center w-full md:w-auto">
           {navLinks.map(link => (
-            <Link key={link.name} href={link.href} className="text-gray-700  hover:text-prime2 font-medium text-sm transition-colors">
+            <Link key={link.name} href={link.href} className="text-gray-700  hover:underline hover:text-prime2 font-medium text-sm transition-colors">
               {link.name}
             </Link>
           ))}
