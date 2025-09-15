@@ -2,22 +2,21 @@ import Blogpage from "../../components/Blogpage";
 
 export async function generateMetadata({ params }) {
   let { slug } = await params;
-  console.log(slug)
+ 
 
   const res = await fetch(`https://fashionmane.com/api/findpost`, {
     method: "POST",
-    body: JSON.stringify({ slug : slug }),
+    body: JSON.stringify({ slug }),
     headers: { "Content-Type": "application/json" },
     cache: "no-store", 
   });
 
   const data = await res.json();
   const post = data?.post || {};
-  console.log(post)
-  console.log(data)
+
 
   // Fallbacks
-  const metaTitle = post.slug ? `${post.slug} | Fashion Mane` : "Blog | Fashion Mane";
+  const metaTitle = post.title ? `${post.title} | Fashion Mane` : "Blog | Fashion Mane";
   const metaDesc = post.description || "Read the latest trends, outfits, and fashion tips on Fashion Mane.";
   const canonicalUrl = `https://fashionmane.com/Blog/${slug}`;
   const ogImage = post.image || "https://fashionmane.com/logo.png"; // add default
@@ -54,9 +53,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   let { slug } = await params;
-  console.log(slug)
-  slug = decodeURIComponent(slug);
-  console.log(slug)
+
 
   return <Blogpage slug={slug} />;
 }
