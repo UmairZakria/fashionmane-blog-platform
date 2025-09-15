@@ -11,17 +11,17 @@ import { format } from "date-fns";
 
 import { useEffect, useState } from "react";
 import { useBlog } from "@/Context/blogcontext";
-const Blogpage = ({title}) => {
+const Blogpage = ({slug}) => {
   const { blogs } = useBlog();
 
   const router = useRouter();
 //   const title = decodeURIComponent(params.title);
   const [post, setPost] = useState({ title: "", content: "" });
 
-  const getdata = async (title) => {
+  const getdata = async (slug) => {
     try {
-      console.log(title);
-      const res = await axios.post("/api/findpost", { title });
+      console.log(slug);
+      const res = await axios.post("/api/findpost", { slug });
       setPost(res.data.post);
       console.log(res);
     } catch (error) {
@@ -32,15 +32,15 @@ const Blogpage = ({title}) => {
 
   useEffect(() => {
     if (blogs.length == 0) {
-      getdata(title);
+      getdata(slug);
     } else {
       const blog = blogs.find(
-        (item) => item.title.toLowerCase() === title.toLowerCase()
+        (item) => item.slug === slug
       );
       console.log(blog);
       setPost(blog);
     }
-  }, [title]);
+  }, [slug]);
 
   return (
     <>

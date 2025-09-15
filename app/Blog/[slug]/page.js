@@ -1,25 +1,25 @@
 import Blogpage from "../../components/Blogpage";
-import {deslugify} from "@/lib/deslugify"
 
 export async function generateMetadata({ params }) {
-  let { title } = await params;
-  title = await deslugify(title)
-  title = decodeURIComponent(title);
+  let { slug } = await params;
+  console.log(slug)
 
   const res = await fetch(`https://fashionmane.com/api/findpost`, {
     method: "POST",
-    body: JSON.stringify({ title }),
+    body: JSON.stringify({ slug : slug }),
     headers: { "Content-Type": "application/json" },
-    cache: "no-store", // always fresh for metadata
+    cache: "no-store", 
   });
 
   const data = await res.json();
   const post = data?.post || {};
+  console.log(post)
+  console.log(data)
 
   // Fallbacks
-  const metaTitle = post.title ? `${post.title} | Fashion Mane` : "Blog | Fashion Mane";
+  const metaTitle = post.slug ? `${post.slug} | Fashion Mane` : "Blog | Fashion Mane";
   const metaDesc = post.description || "Read the latest trends, outfits, and fashion tips on Fashion Mane.";
-  const canonicalUrl = `https://fashionmane.com/Blog/${encodeURIComponent(title)}`;
+  const canonicalUrl = `https://fashionmane.com/Blog/${slug}`;
   const ogImage = post.image || "https://fashionmane.com/logo.png"; // add default
 
   return {
@@ -53,8 +53,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }) {
-  let { title } = await params;
-  title = await deslugify(title)
-  title = decodeURIComponent(title);
-  return <Blogpage title={title} />;
+  let { slug } = await params;
+  console.log(slug)
+  slug = decodeURIComponent(slug);
+  console.log(slug)
+
+  return <Blogpage slug={slug} />;
 }

@@ -21,9 +21,9 @@ const Main = ({ data }) => {
   const [y, setY] = useState(15);
 
 
-  const handleRedirect = (title) => {
-    let titlesl = slugify(title)
-    router.push(`/Blog/${encodeURIComponent(titlesl)}`);
+  const handleRedirect = (slug) => {
+
+    router.push(`/Blog/${encodeURIComponent(slug)}`);
   };
 
   const handleLoad = () => {
@@ -45,7 +45,7 @@ const Main = ({ data }) => {
     return clone;
   }, [blogs]);
 
-  const Card = ({ _id, image, category, date, discription, title }) => (
+  const Card = ({ _id, image, category, date, discription, title,slug }) => (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -55,7 +55,7 @@ const Main = ({ data }) => {
       }}
       viewport={{ once: true }}
       key={_id}
-      onClick={() => handleRedirect(title)}
+      onClick={() => handleRedirect(slug)}
       className="shadow-xl group overflow-hidden h-[480px] hover:shadow-sm transition-all duration-300 ease-in-out rounded-xl w-full md:w-[330px] 2xl:w-[400px] md:mx-0 cursor-pointer space-y-2 pb-3 flex flex-col justify-between"
     >
       <div className="overflow-hidden w-full">

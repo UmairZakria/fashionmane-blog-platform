@@ -68,10 +68,10 @@ const Sidebar = ({ datablog }) => {
     }
   }, [searchQuery]);
 
-  const handelredrict = (title) => {
-    let titlesl = slugify(title)
+  const handelredrict = (slug) => {
 
-    router.push(`/Blog/${encodeURIComponent(titlesl)}`);
+
+    router.push(`/Blog/${encodeURIComponent(slug)}`);
   };
   return (
     <>
@@ -90,7 +90,7 @@ const Sidebar = ({ datablog }) => {
           {search.slice(0, 5).map((data, index) => (
             <div
               key={index}
-              onClick={() => handelredrict(data.title)}
+              onClick={() => handelredrict(data.slug)}
               className="p-2  flex items-center hover:bg-white rounded-xl  -4 h-[80px] gap-1  cursor-pointer"
             >
               <h2 className="line-clamp-2 text-prime">{data.title}</h2>
@@ -106,7 +106,7 @@ const Sidebar = ({ datablog }) => {
               .map((data) => (
                 <div
                   key={data._id}
-                  onClick={() => handelredrict(data.title)}
+                  onClick={() => handelredrict(data.slug)}
                   className="flex cursor-pointer   w-full lg:h-auto  md:h-[180px] gap-3 lg:gap-1 p-1 "
                 >
                   <div className="w-full flex   justify-evenly   flex-col">

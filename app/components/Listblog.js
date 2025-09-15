@@ -8,7 +8,7 @@ import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-import { slugify } from "@/lib/slugify";
+
 
 const Listblog = (Props) => {
   const rout = useRouter();
@@ -24,10 +24,8 @@ const Listblog = (Props) => {
       setY(y + 3);
     }
   };
-  const handelredrict = (title) => {
-    let titlesl = slugify(title)
-
-    rout.push(`/Blog/${encodeURIComponent(titlesl)}`);
+  const handelredrict = (slug) => {
+    rout.push(`/Blog/${encodeURIComponent(slug)}`);
   };
   const handelredrict2 = (title) => {
     rout.push(`/Panel/Blogedit/${encodeURIComponent(title)}`);
@@ -130,7 +128,7 @@ const Listblog = (Props) => {
               }}
               viewport={{once:true}}
                 key={index}
-                onClick={() => handelredrict(data.title)}
+                onClick={() => handelredrict(data.slug)}
                 className="shadow-xl h-[480px] group  overflow-hidden bg-white  max-w-[400px] rounded-lg  md:mx-0 mx-5 cursor-pointer space-y-1 pb-3 flex flex-col justify-between "
               >
                 <div className=" overflow-hidden rounded-t-lg">
