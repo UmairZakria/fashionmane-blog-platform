@@ -31,7 +31,7 @@ module.exports = {
       // Generate sitemap entries
       return posts.map((post) => {
         // Clean/encode the title to be safe for URLs
-        const slug = encodeURIComponent(post.title.replace(/\s+/g, "-"));
+        const slug = encodeURIComponent(post.slug);
 
         return {
           loc: `https://fashionmane.com/Blog/${slug}`,
